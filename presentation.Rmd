@@ -1,6 +1,6 @@
 ---
 title: "SafeGraph Mobility Data"
-author: "Charles C Lanfear"
+author: "Chuck Lanfear"
 date: "Apr 16, 2020<br>Updated: `r gsub(' 0', ' ', format(Sys.Date(), format='%b %d, %Y'))`"
 output:
   xaringan::moon_reader:
@@ -23,9 +23,13 @@ The data described today were acquired by Adrian Dobra, UW Statistics.
 
 He is seeking collaborators with interesting research ideas.
 * Use agreement: Adrian must be PI for data to be used on a project.
-* Research areas wide open
+* Research areas are wide open.
 
-The data are *incredibly* rich and clean; the main barriers are computation and imagination.
+--
+
+The data are *incredibly* rich but also clean.
+
+The main barriers are **computation** and **imagination**.
 
 
 
@@ -36,22 +40,33 @@ You may have seen [recent New York Times articles](https://www.nytimes.com/inter
 * NYT obtained 50 billion locations over a few months on 12 million Americans
 * Able to track congresspeople, Secret Service agents, etc.
 
+--
+
 These are GPS location pings from phone apps.
 * Precise locations
 * High variability in reporting depending on app
    + Sometimes *incredibly frequent*--can determine exact movement speed.
+   + Other times sparse and erratic.
 * Usually no data except user ID and locations
+   + Not even the app generating the ping.
 
 ---
 # SafeGraph
 
+The data described today are from **SafeGraph**.
+
 * [Geospatial data company](https://www.safegraph.com/)
+
 * Aggregate data from many sources, verify and clean
-   + Most is cellular phone application geolocations.
+   + *Most* is cellular phone application geolocations.
+   + Link these to other data sources including Census/ACS.
+   
 * Sell for marketing purposes
    + Usually only aggregated data
-   + Ex: Number of people in a census block at given time/day
-   + Ex: Number of people traveling from block A to block B each day
+   + Ex: *Number of people in a census block group (CBG) at given time/day*
+   + Ex: *Number of people traveling from CBG A to CBG B each day*
+   + Ex: *What brands people in this CBG exposed to.*
+   
 * Briefly had an academic partnership program allowing researchers to download *raw, non-aggregated data*.
 * [Started a shelter-in-place analytics dashboard recently](https://www.safegraph.com/dashboard/covid19-shelter-in-place)
 
@@ -82,13 +97,13 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
 * 25 billion observations
 * 7 million unique IDs
    + These are *device IDs* not necessarily individuals
-   + 100k+ observations not uncommon
+   + 100k+ observations not uncommon for an individual
 * 780 thousand WA home locations
    + Probabalistically matched to block groups
    + Also have non-WA home locations (80 million)
 * 3 month period: November 2018 - January 2019
 * Biggish Data
-   + 140 gigs of `.csv` files for WA
+   + 138 gigs of `.csv` files for WA
 
 ---
 # Codebook
@@ -120,7 +135,7 @@ gt::gt(tribble(~Field, ~Description, ~Type, ~Example,
    + 25 million rows each
    + All observations for a given individual in single file
    + 138 GB total
-* User index file
+* User index file (lookup table)
    + Indicates which group file contains individual's data
 
 ---
@@ -191,14 +206,22 @@ class: inverse
    + Possibly route and mode specific
 
 ---
-# What We're Looking For
+# Where You Come in
 
 * High-impact applications
    + Long-standing theoretical questions
-   + Testing assumptions of theories
+   + Testing assumptions of major theories
    
 * Straightforward applications
+   + Useful but fast projects
 
 * Time-sensitive questions
    + These are recent data!
+   + Awareness of these data is growing rapidly
+   
+* Grant fundable applications!
+
+---
+class: inverse
+# Questions
 

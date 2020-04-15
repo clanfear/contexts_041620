@@ -3,7 +3,7 @@
   <head>
     <title>SafeGraph Mobility Data</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Charles C Lanfear" />
+    <meta name="author" content="Chuck Lanfear" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -11,8 +11,8 @@
 class: center, top, title-slide
 
 # SafeGraph Mobility Data
-### Charles C Lanfear
-### Apr 16, 2020<br>Updated: Apr 11, 2020
+### Chuck Lanfear
+### Apr 16, 2020<br>Updated: Apr 15, 2020
 
 ---
 
@@ -25,9 +25,13 @@ The data described today were acquired by Adrian Dobra, UW Statistics.
 
 He is seeking collaborators with interesting research ideas.
 * Use agreement: Adrian must be PI for data to be used on a project.
-* Research areas wide open
+* Research areas are wide open.
 
-The data are *incredibly* rich and clean; the main barriers are computation and imagination.
+--
+
+The data are *incredibly* rich but also clean.
+
+The main barriers are **computation** and **imagination**.
 
 
 
@@ -38,22 +42,33 @@ You may have seen [recent New York Times articles](https://www.nytimes.com/inter
 * NYT obtained 50 billion locations over a few months on 12 million Americans
 * Able to track congresspeople, Secret Service agents, etc.
 
+--
+
 These are GPS location pings from phone apps.
 * Precise locations
 * High variability in reporting depending on app
    + Sometimes *incredibly frequent*--can determine exact movement speed.
+   + Other times sparse and erratic.
 * Usually no data except user ID and locations
+   + Not even the app generating the ping.
 
 ---
 # SafeGraph
 
+The data described today are from **SafeGraph**.
+
 * [Geospatial data company](https://www.safegraph.com/)
+
 * Aggregate data from many sources, verify and clean
-   + Most is cellular phone application geolocations.
+   + *Most* is cellular phone application geolocations.
+   + Link these to other data sources including Census/ACS.
+   
 * Sell for marketing purposes
    + Usually only aggregated data
-   + Ex: Number of people in a census block at given time/day
-   + Ex: Number of people traveling from block A to block B each day
+   + Ex: *Number of people in a census block group (CBG) at given time/day*
+   + Ex: *Number of people traveling from CBG A to CBG B each day*
+   + Ex: *What brands people in this CBG exposed to.*
+   
 * Briefly had an academic partnership program allowing researchers to download *raw, non-aggregated data*.
 * [Started a shelter-in-place analytics dashboard recently](https://www.safegraph.com/dashboard/covid19-shelter-in-place)
 
@@ -84,13 +99,13 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
 * 25 billion observations
 * 7 million unique IDs
    + These are *device IDs* not necessarily individuals
-   + 100k+ observations not uncommon
+   + 100k+ observations not uncommon for an individual
 * 780 thousand WA home locations
    + Probabalistically matched to block groups
    + Also have non-WA home locations (80 million)
 * 3 month period: November 2018 - January 2019
 * Biggish Data
-   + 140 gigs of `.csv` files for WA
+   + 138 gigs of `.csv` files for WA
 
 ---
 # Codebook
@@ -100,7 +115,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#uazsundjwu .gt_table {
+#enapusvlzq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -123,7 +138,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-left-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_heading {
+#enapusvlzq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -135,7 +150,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-right-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_title {
+#enapusvlzq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -145,7 +160,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-bottom-width: 0;
 }
 
-#uazsundjwu .gt_subtitle {
+#enapusvlzq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -155,13 +170,13 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-top-width: 0;
 }
 
-#uazsundjwu .gt_bottom_border {
+#enapusvlzq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_col_headings {
+#enapusvlzq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -176,7 +191,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-right-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_col_heading {
+#enapusvlzq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -196,7 +211,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   overflow-x: hidden;
 }
 
-#uazsundjwu .gt_column_spanner_outer {
+#enapusvlzq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -208,15 +223,15 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   padding-right: 4px;
 }
 
-#uazsundjwu .gt_column_spanner_outer:first-child {
+#enapusvlzq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uazsundjwu .gt_column_spanner_outer:last-child {
+#enapusvlzq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uazsundjwu .gt_column_spanner {
+#enapusvlzq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -228,7 +243,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   width: 100%;
 }
 
-#uazsundjwu .gt_group_heading {
+#enapusvlzq .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -250,7 +265,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   vertical-align: middle;
 }
 
-#uazsundjwu .gt_empty_group_heading {
+#enapusvlzq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -265,19 +280,19 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   vertical-align: middle;
 }
 
-#uazsundjwu .gt_striped {
+#enapusvlzq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uazsundjwu .gt_from_md > :first-child {
+#enapusvlzq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uazsundjwu .gt_from_md > :last-child {
+#enapusvlzq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uazsundjwu .gt_row {
+#enapusvlzq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -296,7 +311,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   overflow-x: hidden;
 }
 
-#uazsundjwu .gt_stub {
+#enapusvlzq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -308,7 +323,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   padding-left: 12px;
 }
 
-#uazsundjwu .gt_summary_row {
+#enapusvlzq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -318,7 +333,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   padding-right: 5px;
 }
 
-#uazsundjwu .gt_first_summary_row {
+#enapusvlzq .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -328,7 +343,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-top-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_grand_summary_row {
+#enapusvlzq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -338,7 +353,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   padding-right: 5px;
 }
 
-#uazsundjwu .gt_first_grand_summary_row {
+#enapusvlzq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -348,7 +363,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-top-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_table_body {
+#enapusvlzq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -357,7 +372,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-bottom-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_footnotes {
+#enapusvlzq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -371,13 +386,13 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-right-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_footnote {
+#enapusvlzq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#uazsundjwu .gt_sourcenotes {
+#enapusvlzq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -391,46 +406,46 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
   border-right-color: #D3D3D3;
 }
 
-#uazsundjwu .gt_sourcenote {
+#enapusvlzq .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#uazsundjwu .gt_left {
+#enapusvlzq .gt_left {
   text-align: left;
 }
 
-#uazsundjwu .gt_center {
+#enapusvlzq .gt_center {
   text-align: center;
 }
 
-#uazsundjwu .gt_right {
+#enapusvlzq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uazsundjwu .gt_font_normal {
+#enapusvlzq .gt_font_normal {
   font-weight: normal;
 }
 
-#uazsundjwu .gt_font_bold {
+#enapusvlzq .gt_font_bold {
   font-weight: bold;
 }
 
-#uazsundjwu .gt_font_italic {
+#enapusvlzq .gt_font_italic {
   font-style: italic;
 }
 
-#uazsundjwu .gt_super {
+#enapusvlzq .gt_super {
   font-size: 65%;
 }
 
-#uazsundjwu .gt_footnote_marks {
+#enapusvlzq .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="uazsundjwu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="enapusvlzq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -503,7 +518,7 @@ Clean individual-level location trace data from apps--the foundation for SafeGra
    + 25 million rows each
    + All observations for a given individual in single file
    + 138 GB total
-* User index file
+* User index file (lookup table)
    + Indicates which group file contains individual's data
 
 ---
@@ -574,16 +589,24 @@ class: inverse
    + Possibly route and mode specific
 
 ---
-# What We're Looking For
+# Where You Come in
 
 * High-impact applications
    + Long-standing theoretical questions
-   + Testing assumptions of theories
+   + Testing assumptions of major theories
    
 * Straightforward applications
+   + Useful but fast projects
 
 * Time-sensitive questions
    + These are recent data!
+   + Awareness of these data is growing rapidly
+   
+* Grant fundable applications!
+
+---
+class: inverse
+# Questions
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
