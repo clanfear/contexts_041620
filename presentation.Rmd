@@ -206,6 +206,28 @@ class: inverse
    + Possibly route and mode specific
 
 ---
+
+### [Wang, Phillips, Small, & Sampson 2018](https://doi.org/10.1073/pnas.1802537115)
+
+*"Urban mobility and neighborhood isolation in America's 50 largest cities."*
+
+* Calculated exposure to CBGs by residence CBG
+   + 650 million geocoded Twitter messages
+   + 400,000 residents of 50 cities
+   + 18 month span
+   + DBSCAN to identify home block group
+   + CBG counts weighted by proportion Twitter users, age, and gender.
+* Analyzed mobility of residents of CBGs
+   + Poor vs. non-poor mobility
+   + CBG racial composition and mobility
+   + Exposure to non-poor white neighborhoods
+* Key Findings: *Residents of poor minority neighborhoods are highly mobile but have low exposure to non-poor white neighborhoods.*
+* Issues:
+   * Twitter users (with location on) very select sample
+   * Tweeting behavior entangled with mobility
+   * Cannot estimate time spent in locations (exposure is binary for individuals)
+   
+---
 # Where You Come in
 
 * High-impact applications
@@ -218,9 +240,12 @@ class: inverse
 * Time-sensitive questions
    + These are recent data!
    + Awareness of these data is growing rapidly
-   
+
 * Grant fundable applications!
 
+* Replication / improvement of existing work
+
+   
 ---
 class: inverse
 # Questions
